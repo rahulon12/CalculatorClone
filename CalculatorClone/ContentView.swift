@@ -13,11 +13,18 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text(currentDisplayValue)
-                .contentTransition(.numericText())
-                .font(.largeTitle)
-                .frame(maxWidth: .infinity)
-                .multilineTextAlignment(.trailing)
+            HStack {
+                Spacer()
+
+                Text(currentDisplayValue)
+                    .contentTransition(.numericText())
+                    .font(.largeTitle)
+                    .bold()
+                    .multilineTextAlignment(.trailing)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 36)
+
             Grid {
                 GridRow {
                     Group {
@@ -60,6 +67,8 @@ struct ContentView: View {
                         .frame(width: 150)
 
                     CalculatorButton(.custom("."))
+                        .disabled(true)
+
                     CalculatorButton(.equals)
                         .tint(.orange)
                 }

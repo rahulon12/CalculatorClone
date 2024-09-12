@@ -22,8 +22,8 @@ struct ContentView: View {
                 GridRow {
                     Group {
                         CalculatorButton(.reset)
-                        CalculatorButton(.custom("+/-"))
-                        CalculatorButton(.custom("%"))
+                        CalculatorButton(.toggleSign)
+                        CalculatorButton(.makePercentage)
                     }
                     .tint(.gray)
 

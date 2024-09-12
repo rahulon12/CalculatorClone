@@ -49,18 +49,23 @@ struct CalculatorBrain {
     }
 
     mutating func updateWorkingNumber(with newDigit: Double) {
-//        if selectedOperation != nil {
-//            currentResult = workingNumber
-//            // workingNumber = newDigit
-//        }
-
-        /*
-         else {
-            workingNumber = workingNumber * 10 + newDigit
-        }
-         */
-
         workingNumber = workingNumber * 10 + newDigit
+    }
+
+    mutating func toggleSign() {
+        if workingNumber != 0 {
+            workingNumber = -workingNumber
+        } else if currentResult != 0 {
+            currentResult = -currentResult
+        }
+    }
+
+    mutating func makePercentage() {
+        if workingNumber != 0 {
+            workingNumber /= 100
+        } else if currentResult != 0 {
+            currentResult /= 100
+        }
     }
 
     mutating func reset() {

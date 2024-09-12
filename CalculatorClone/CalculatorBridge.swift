@@ -11,6 +11,8 @@ import SwiftUI
     enum ViewElement: Equatable {
         case value(Int)
         case operation(CalculatorOperation)
+        case toggleSign
+        case makePercentage
         case equals
         case reset
         case custom(String)
@@ -19,6 +21,8 @@ import SwiftUI
             switch self {
             case .value(let value): return "\(value)"
             case .operation(let operation): return operation.rawValue
+            case .toggleSign: return "+/-"
+            case .makePercentage: return "%"
             case .equals: return "="
             case .reset: return "AC"
             case .custom(let custom): return custom
@@ -38,6 +42,8 @@ import SwiftUI
         switch viewElement {
         case .value(let value): userSelectedDigit(Double(value))
         case .operation(let operation): userSelectedOperation(operation)
+        case .toggleSign: calculatorBrain.toggleSign()
+        case .makePercentage: calculatorBrain.makePercentage()
         case .equals: calculatorBrain.performOperation()
         case .reset: calculatorBrain.reset()
         default: break

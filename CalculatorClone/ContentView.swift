@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var calculator = CalculatorBridge()
+    @Environment(CalculatorBridge.self) private var calculator
 
     var body: some View {
         VStack {
@@ -74,7 +74,6 @@ struct ContentView: View {
                 }
             }
         }
-        .environment(calculator)
         .tint(.init(uiColor: .darkGray))
         .background()
         .environment(\.colorScheme, .dark)
@@ -91,4 +90,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(CalculatorBridge())
 }

@@ -28,10 +28,20 @@ struct CalculatorButton: View {
                 .overlay {
                     Text(value.description())
                         .font(.title)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(
+                            isSelected ? .red : .white
+                        )
                 }
         }
         .frame(height: 75)
         .frame(width: circular ? 75 : nil)
+    }
+
+    var isSelected: Bool {
+        guard case .operation(let calculatorOperation) = value, let selectedOp = calculator.calculatorBrain.selectedOperation else {
+            return false
+        }
+
+        return selectedOp == calculatorOperation
     }
 }

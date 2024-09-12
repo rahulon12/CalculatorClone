@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CalculatorCloneApp: App {
+    @State var calculator = CalculatorBridge() // ViewModel
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(calculator)
         }
     }
 }

@@ -41,19 +41,26 @@ struct CalculatorBrain {
     }
 
     mutating func selectOperation(_ operation: Operation) {
-        if workingNumber == 0 {
-            workingNumber = currentResult
+        if currentResult == 0 {
+            currentResult = workingNumber
         }
+        workingNumber = 0
         selectedOperation = operation
     }
 
     mutating func updateWorkingNumber(with newDigit: Double) {
-        if selectedOperation != nil {
-            currentResult = workingNumber
-            workingNumber = newDigit
-        } else {
+//        if selectedOperation != nil {
+//            currentResult = workingNumber
+//            // workingNumber = newDigit
+//        }
+
+        /*
+         else {
             workingNumber = workingNumber * 10 + newDigit
         }
+         */
+
+        workingNumber = workingNumber * 10 + newDigit
     }
 
     mutating func reset() {
